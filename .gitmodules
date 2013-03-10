@@ -1,0 +1,3 @@
+[submodule "pycdm"]
+	path = pycdm
+	url = git@github.com:bibliotechy/pycdm.git
