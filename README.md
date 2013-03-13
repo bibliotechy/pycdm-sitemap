@@ -21,6 +21,9 @@ On Linux
 * `cd pycdm`
 * `git checkout master`
 
+You also need to update at least one, variable in build.py. 
+The `baseurl` variable is required so the script can point at the appropriate server.
+
 
 Usage
 -----------------
