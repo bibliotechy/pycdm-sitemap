@@ -18,6 +18,8 @@ On Linux
 * `git clone https://github.com/bibliotechy/pycdm-sitemap.git`
 * `git submodule init`
 * `git submodule update`
+* `cd pycdm`
+* `git checkout master`
 
 
 Usage
