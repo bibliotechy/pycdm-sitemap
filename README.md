@@ -10,10 +10,6 @@ Installation
 -----------------
 On Linux 
 
-* `cd /path/to/contentdm6/Website/public_html/`
-* `mkdir sitemap`
-
-
 * `cd /usr/local/` # or wherever you want to install the scripts
 * `git clone https://github.com/bibliotechy/pycdm-sitemap.git`
 * `git submodule init`
@@ -21,18 +17,21 @@ On Linux
 * `cd pycdm`
 * `git checkout master`
 
-You also need to update at least one, variable in build.py. 
-The `baseurl` variable is required so the script can point at the appropriate server.
+then
+
+* `cd /path/to/contentdm6/Website/public_html/`
+* `mkdir sitemap`
 
 
 Usage
 -----------------
 
 * `cd /path/to/pycdm-sitemap`
-* `python ./build.py`
-This will output all of the collection sitemaps and the overall sitemap.xml
+* `./build.py "http://base.url.contentdm.server" --filpath /path/to/contentdm6/Website/public_html/sitemap/`
+This will output all of the collection sitemaps and the overall sitemap.xml into you sitemap directory.
 
-Then copy the output xml files to /path/to/contentdm6/Website/public_html/sitemap directory.
+I set mine up a cron job to run this nightly so I always have fresh sitemap.
+
 
 What Next
 ----------------
