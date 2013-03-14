@@ -1,3 +1,5 @@
+#! /usr/bin/python
+
 __author__ = 'cbn'
 
 import datetime
@@ -9,11 +11,20 @@ sys.path.extend([os.getcwd(), os.getcwd() + "/pycdm"])
 import pycdm
 
 
+parser = argparse.ArgumentParser(description="Create sitemap for all of your ContentDM collections")
+parser.add_argument('urlbase', nargs=1, type=str, help="Base url of your contentDM website" )
+parser.add_argument('--filepath', nargs=1, type=str, dest="filepath", default=os.getcwd(),
+  help="File path where sitemaps should be saved. Defaults to ")
+args = parser.parse_args()
 
-urlbase = "http://digitalcollections.library.gsu.edu"
-filepath = os.getcwd()
-call = pycdm.Api(base=urlbase)
-ns = "http://www.sitemaps.org/schemas/sitemap/0.9"
+urlbase  = args.urlbase[0]
+filepath = str(args.filepath[0])
+call     = pycdm.Api(base=urlbase)
+ns       = "http://www.sitemaps.org/schemas/sitemap/0.9"
+
+print filepath
+print os.getcwd()
+print urlbase
 
 
 def sitemapUrl(alias):
@@ -50,7 +61,7 @@ def buildCollectionIndexInfo(collection, parent, lastmod):
 
 def buildCollectionSitemap(collection):
     """Man is it ugly, but it does the trick"""
-    alias = collection['alias'].strip("/")
+    alias = str(collection['alias'].strip("/"))
     start_record = "1"
     lastmod = datetime.date(1970,1,1)
 
@@ -75,7 +86,7 @@ def buildCollectionSitemap(collection):
                 lastmod = latestDate(item['dmmodified'],lastmod)
         start_record = str(int(start_record) + int(items['pager']['maxrecs']))
 
-    et.ElementTree(urlset).write(filepath + "/sitemap-"+ alias + ".xml")
+    et.ElementTree(urlset).write(filepath + "sitemap-"+ alias + ".xml")
     return lastmod
 
 
