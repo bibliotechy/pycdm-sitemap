@@ -30,7 +30,7 @@ Usage
 * `./build.py "http://base.url.contentdm.server" --filpath /path/to/contentdm6/Website/public_html/sitemap/`
 This will output all of the collection sitemaps and the overall sitemap.xml into you sitemap directory.
 
-I set mine up a cron job to run this nightly so I always have fresh sitemap.
+We set up a nightly cron job to run this so we always have a fresh sitemap.
 
 
 What Next
